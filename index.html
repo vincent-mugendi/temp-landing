@@ -70,13 +70,22 @@
     <div class="background-animation"></div>
     <div class="container">
         <h1>SOMETHING AMAZING IS COMING</h1>
-        <p>I will be live on <strong>Thursday, 27th at Midnight</strong>.</p>
+        <p>I will be live on <strong>Friday, 7th at Midnight</strong>.</p>
         <p class="countdown" id="countdown"></p>
     </div>
 
     <script>
         function updateCountdown() {
-            const launchDate = new Date('February 27, 2025 23:59:59').getTime();
+            // Set the new launch date to the next Friday 7th at midnight
+            const launchDate = new Date();
+            launchDate.setDate(7); // Set to the 7th of the current month
+            launchDate.setHours(23, 59, 59, 0); // Set to midnight
+
+            // If the 7th has already passed this month, set it to the next month
+            if (launchDate < new Date()) {
+                launchDate.setMonth(launchDate.getMonth() + 1);
+            }
+
             const now = new Date().getTime();
             const timeLeft = launchDate - now;
 
